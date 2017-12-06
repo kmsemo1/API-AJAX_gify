@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +9,34 @@
     <link rel="stylesheet" type="text.css" href="css/style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <div id="container"></div>
-    <h1>Gify</h1>
+    <div id="container">
+        <h1>Giphy</h1>
 
-    <!-- gify are placed here -->
-<div id="gify"></div>
+        <!-- giphy are placed here -->
+        <div id="giphy"></div>
 
-    <!-- topic buttons placed here -->
-    <div id="topics"></div>
+        <!-- topic buttons placed here -->
+        <div id="btn"></div>
 
-    <form id="gify-form">
-        <label for="gify-input">Input Gify Topics</label>
-        <input type="text" id="gigy-input"><br>
-    </form>
+        <form id="giphy-form">
+            <label for="giphy-input">Input Gify Topics</label>
+            <input type="text" id="gigy-input">
+            <br>
+
+             <!-- Button triggers new giphy to be added -->
+      <input id="add-movie" type="submit" value="Input Gify Topics">
+        </form>
+
+
+    </div>
+
+
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="javascript/app.js"></script>
-    
+
 </body>
+
 </html>
