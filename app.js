@@ -20,7 +20,7 @@ function displayGify() {
             // storing the giphy data
             var gif = response.data[i].url;
             // creating a div to display the giphy
-            var p = $("<img>").attr("src", gif)
+            var p = $("<img class='play'>").attr("src", gif)
             // displaying the giphy
             giphyDiv.append(p);
             // append giphy
@@ -74,7 +74,7 @@ $("#btn").on("click", function (event) {
 
 // =============== pause and animate code below ========
 
-$(".gif").on("click", function () {
+$(".play").on("click", function () {
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
     var state = $(this).attr("data-state");
     // If the clicked image's state is still, update its src attribute to what its data-animate value is.
