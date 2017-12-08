@@ -1,5 +1,5 @@
 // create array with my own favorite topics
-var topics = ["Kanye West", "Cam'ron", "Nas", "Jay Z"];
+var topics = ["Dogs", "Cats", "Monkey", "Bear"];
 
 // function to display gify
 function displayGify() {
@@ -14,17 +14,18 @@ function displayGify() {
 
     }).done(function (response) {
         console.log(response);
-       // creating a div to hold to giphy
-        var giphDiv = $("<div class='giphy'>");
-         // storing the giphy data
-        var gif = response.data[i]
-        // creating a div to display the giphy
-        var p = $("<img>").attr("src", imgURL)
-        // displaying the giphy
-        giphyDiv.append(p);
-      // append giphy
-        $("#giphy").append(p);
-        
+        // creating a div to hold to giphy
+        for (var i = 0; i < topics.length; i++) {
+            var giphyDiv = $("<div class='giphy'>");
+            // storing the giphy data
+            var gif = response.data[i].url;
+            // creating a div to display the giphy
+            var p = $("<img>").attr("src", gif)
+            // displaying the giphy
+            giphyDiv.append(p);
+            // append giphy
+            $("#giphy").append(p);
+        }
     })
 };
 
@@ -36,7 +37,7 @@ function renderButtons() {
     // Deleting the movies prior to adding new movies
     // (this is necessary otherwise you will have repeat buttons)
     $("#btn").empty();
-    
+
     // Looping through the array of movies
     for (var i = 0; i < topics.length; i++) {
 
@@ -53,36 +54,39 @@ function renderButtons() {
         $("#btn").append(a);
     }
 }
+// Calling renderButtons which handles the processing of our movie array
+
+renderButtons();
+$(document).on("click", ".giphyClass", displayGify);
 
 // This function handles events where a movie button is clicked
-$("#btn").on("click", function(event) {
+$("#btn").on("click", function (event) {
     event.preventDefault();
     // This line grabs the input from the textbox
-    var giphy = $("#giphy-input").val().trim();
+    var giphy = $("#giphy-input").val();
 
     // Adding movie from the textbox to our array
     topics.push(giphy);
 
 
-    // Calling renderButtons which handles the processing of our movie array
-    
+
 });
-renderButtons(); 
-$(document).on("click", ".giphyClass", displayGify);
+
 // =============== pause and animate code below ========
 
-    $(".gif").on("click", function() {
-        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-        var state = $(this).attr("data-state");
-        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-        // Then, set the image's data-state to animate
-        // Else set src to the data-still value
-        if (state === "still") {
-          $(this).attr("src", $(this).attr("data-animate"));
-          $(this).attr("data-state", "animate");
-        } else {
-          $(this).attr("src", $(this).attr("data-still"));
-          $(this).attr("data-state", "still");
-        }
-      });
+$(".gif").on("click", function () {
+    // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+    var state = $(this).attr("data-state");
+    // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+    // Then, set the image's data-state to animate
+    // Else set src to the data-still value
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+    } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+    }
+});
+
 
