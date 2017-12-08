@@ -14,7 +14,7 @@ function displayGify() {
 
     }).done(function (response) {
         console.log(response);
-
+        for (var i = 0; i < topics.length; i++) {
         var giphDiv = $("<div class='giphy'>");
          
         var gif = response.data[i]
@@ -22,9 +22,9 @@ function displayGify() {
         var p = $("<p>").text(gif);
 
         $("#giphy").append(p);
-
-    });
-
+        }
+    })
+};
 
 displayGify();
 
@@ -53,18 +53,18 @@ function renderButtons() {
 }
 
 // This function handles events where a movie button is clicked
-$("#add-movie").on("click", function(event) {
+$("#btn").on("click", function(event) {
     event.preventDefault();
     // This line grabs the input from the textbox
-    var movie = $("#movie-input").val().trim();
+    var giphy = $("#movie-input").val().trim();
 
     // Adding movie from the textbox to our array
-    movies.push(movie);
-)};
+    topics.push(giphy);
+
 
     // Calling renderButtons which handles the processing of our movie array
     renderButtons(); 
-
+});
 
 // =============== pause and animate code below ========
 
