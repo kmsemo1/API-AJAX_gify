@@ -17,14 +17,15 @@ function displayGify() {
 
         var giphDiv = $("<div class='giphy'>");
          
-        var gif = response.data
-        for (i = 0; i < topics.length ; i++) {
-            var p = $("<p>").text(gif[i].embed_url)            )
-        }
+        var gif = response.data[i]
+        
+        var p = $("<p>").text(gif);
+
+        $("#giphy").append(p);
 
     });
 
-}
+
 displayGify();
 
 // Function for displaying giphy data
@@ -51,5 +52,15 @@ function renderButtons() {
     }
 }
 
+// This function handles events where a movie button is clicked
+$("#add-movie").on("click", function(event) {
+    event.preventDefault();
+    // This line grabs the input from the textbox
+    var movie = $("#movie-input").val().trim();
 
+    // Adding movie from the textbox to our array
+    movies.push(movie);
 
+    // Calling renderButtons which handles the processing of our movie array
+    renderButtons();
+)};
